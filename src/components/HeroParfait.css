@@ -1,0 +1,35 @@
+.hero--parfait .hero-inner{
+  display: grid;
+  gap: 18px;
+  align-items: center;
+}
+
+.parfait{
+  position: relative;
+  width: 260px;
+  height: 360px;
+  margin: 0 auto;
+}
+
+.parfait img{
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-copy{
+  text-align: center;
+}
+
+.hero-title{
+  margin: 0;
+}
+
+.hero-sub{
+  margin: 8px 0 0;
+  opacity: 0.8;
+}

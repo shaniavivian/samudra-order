@@ -1,0 +1,68 @@
+:root{
+  /* if you already have these, keep yours */
+  --bg: #F7F5EF;
+  --text: #5A5954;
+  --text-strong: #2F2E2A;
+  --muted: rgba(47,46,42,.55);
+  --line: rgba(0,0,0,0.08);
+  --line-weak: rgba(47,46,42,0.18);
+  --panel: #F7F5EF;
+  --shadow: 0 18px 50px rgba(0,0,0,0.18);
+  --radius: 26px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
+  --olive: #7F7C4F;
+}
+.btn-add,
+.add-to-cart {
+  background: #ffffff;
+  color: var(--text);          /* or #1d3949 */
+  border: 1px solid var(--line);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.modalPanel {
+  width: min(380px, 92vw);
+  background: #f7f5ef;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+}
+
+.modalOverlay--item { z-index: 1400; }
+.modalOverlay--layers { z-index: 1500; }
+
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Bean detail example (keep if you use it) */
+.beanDetail{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.beanDetail-media{
+  background: var(--card);
+  border-radius: 22px;
+  padding: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.beanDetail-media img{
+  width: 160px;
+  height: auto;
+}

@@ -1,0 +1,78 @@
+.splash{
+  position: fixed;
+  inset: 0;
+  background: #fbf8f2;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.splash-mask{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.splash-stack{
+  position: relative;
+  width: 260px;
+  height: 360px;
+}
+
+.splash-layer{
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  animation: splashLayerIn 0.55s ease-out forwards;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes splashLayerIn{
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.splash-stack.hide{
+  animation: splashStackOut 0.5s ease-out forwards;
+}
+
+@keyframes splashStackOut{
+  to { opacity: 0; transform: scale(0.98); }
+}
+
+.splash-logoWrap{
+  position: absolute;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.splash-logoWrap.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.splash-logo{
+  width: 180px;
+  height: auto;
+}
+
+.splash.is-exit{
+  animation: splashExit 0.4s ease-out forwards;
+}
+
+@keyframes splashExit{
+  to { opacity: 0; }
+}
+
+.splash.is-exit {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}

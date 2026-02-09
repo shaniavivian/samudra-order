@@ -1,0 +1,667 @@
+/* =============================
+   Island Story Page (polished + gutter-safe)
+   Target: <main class="island-story"> ... </main>
+   ============================= */
+
+
+.island-story{       /* main ink (stable, neutral-warm) */    
+  --ink-strong: #1f1f1c;   /* headers / section titles (anchor) */
+  --ink: #2b2b28;          /* body text */
+  --ink-soft: #6a645d;     /* JP subtitles / descriptions */
+
+
+  --title: var(--ink-strong);
+  --text: var(--ink);
+  --subtext: var(--ink-soft);
+  --muted: rgba(43, 43, 40, 0.55);
+  --muted2: rgba(43, 43, 40, 0.35);
+  /* ===== Lines (slightly warmer) ===== */
+  --line: rgba(60, 61, 61, 0.12);
+  --divider: rgba(60, 61, 61, 0.08);
+  --gutter: 22px;
+  color: var(--text);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* Optional: keep background consistent (if you want) */
+/* .island-story{ background: #f6f4ef; min-height: 100vh; } */
+
+/* Make sure inner blocks don't re-add their own horizontal padding */
+.island-story .islands-intro,
+.island-story .islands-list,
+.island-story .flow,
+.island-story .section,
+.island-story .menu-footer{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* =============================
+   Page Header (same system as Beans/Menu)
+   ============================= */
+
+.pageHeader{
+  padding-inline: var(--gutter);
+  padding-block: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align */
+  text-align: left;
+  gap: 6px;
+}
+
+.island-story .pageHeader-icon img{
+  width: 70px;
+  height: auto;
+  display: block;
+  opacity: .9;
+}
+
+.island-story .pageHeader-title{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  color: var(--text);
+}
+
+.island-story .pageHeader-sub{
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 28ch;
+}
+
+/* =============================
+   Intro
+   ============================= */
+
+.island-story .islands-intro{
+  padding-top: 6px;
+  padding-bottom: 16px;
+}
+
+.island-story .islands-lead{
+  margin: 10px 0 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.island-story .islands-lead2{
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  text-align: left;
+}
+
+/* =============================
+   Island cards list
+   ============================= */
+
+.island-story .islands-list{
+  padding-top: 10px;
+  padding-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.island-story .island-card{
+  text-align: center;
+}
+
+.island-story .island-shape{
+  width: 170px;
+  height: auto;
+  margin: 0 auto 12px;
+  display: block;
+}
+
+.island-story .island-desc{
+  margin: 8px auto 0;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+/* =============================
+   Flow (vertical)
+   ============================= */
+
+.island-story .flow{
+  list-style: none;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 22px;
+}
+
+.island-story .flow-item{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 22px;
+  border: none;
+  background: transparent;
+}
+
+.island-story .flow-label{
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(0,0,0,.10);
+  color: rgba(0,0,0,.75);
+  margin-bottom: 10px;
+}
+
+.island-story .flow-item .p{
+  margin: 0;
+  max-width: 26em;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(0,0,0,.75);
+}
+
+.island-story .flow-item::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2px;
+  height: 18px;
+  background: rgba(0,0,0,.12);
+  transform: translateX(-50%);
+}
+
+.island-story .flow-item:last-child::after{ display: none; }
+
+/* =============================
+   Reveal utility (safer + smoother)
+   ============================= */
+
+.island-story .reveal{
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 420ms cubic-bezier(.22,.61,.36,1),
+    transform 420ms cubic-bezier(.22,.61,.36,1);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, transform;
+}
+
+.island-story .reveal.is-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .island-story .reveal{
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+h2,
+h3{
+  text-align: center;
+}
+
+
+.island-story .p{
+  font-size: 12px;
+  line-height: 1.8;
+  padding-left: 24px;
+  color: var(--muted, #7a8a93);
+}
+
+.kicker{
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted, #7a8a93);
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+h3{
+  font-size: 20px;     /* bigger than kicker */
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: .01em;
+  color: var(--text, #1d3949);
+  text-align: center;
+}
+
+/* BIG title only */
+.pageHeader-title{
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text, #1d3949);
+  text-align: center;   /* or left if you prefer */
+}
+
+/* keep subtitle fully muted (including SAMUDRA span) */
+.pageHeader-sub,
+.pageHeader-sub *{
+  color: var(--muted, #7a8a93) !important;
+}
+
+/* Island JP names (ジャワ / スマトラ / etc.) */
+.island-story .island-name {
+  color: var(--text, #1d3949); /* blue-black */
+  font-weight: 700;
+}
+
+/* Smaller title just for island scale comparison */
+.island-story .island-scaleTitle {
+  font-size: 14px;          /* ↓ smaller */
+  font-weight: 600;         /* calmer than section headers */
+  color: var(--text);
+  margin: 8px 0 10px;
+  letter-spacing: 0.04em;
+}
+.island-story .island-scaleMaps figure:first-child img{
+  transform: translateX(18px);
+}
+
+
+.island-story .mapFrame{
+  width: 100%;
+  height: 200px;      /* match your current look */
+  overflow: hidden;
+  border-radius: 14px; /* optional */
+}
+
+.island-story img.sumatra-map{
+  width: 80%;        /* zoom in a bit */
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* ===== 05 cards layout ===== */
+.islandCards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Card */
+.islandCard{
+  background: #fbf8f2;              /* warm off-white (keep calm) */
+  border: 1px solid rgba(29,57,73,.10);
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.islandCard:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.08);
+}
+
+/* top row */
+.islandCard-top{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.islandCard-figure{
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  opacity: .95;
+}
+
+.islandCard-name{
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: .02em;
+}
+
+/* fact */
+.islandCard-fact{
+  margin: 5;
+  padding: 0 5px 0 5px;
+  line-height: 1.75;
+  font-size: .75rem;
+ color: var(--muted, #7a8a93)
+}
+
+/* extra block (Sumatra) */
+.islandCard-extra{
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(29,57,73,.10);
+}
+
+.islandCard-extraTitle{
+  font-size: .82rem;
+  font-weight: 700;
+  opacity: .75;
+  margin-bottom: 10px;
+}
+
+.islandCard-maps{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.islandCard-maps figure{
+  margin: 0;
+}
+p.map-caption{
+  font-size: .70rem;
+   color: var(--muted, #7a8a93)
+}
+
+.islandCard-maps img{
+  width: 100%;
+  height: auto;
+  place-items: center;
+  display: block;
+  border-radius: 12px;
+}
+
+ /* BOX 04 only: remove inherited padding */
+.island-story .section--guide .p-theme {
+  padding-left: 0 !important; 
+   color: var(--muted, #7a8a93)
+}
+/* ===== Scale map: make it responsive + centered ===== */
+
+.island-story .island-scaleMaps figure{
+  margin: 0;
+}/* =============================
+   Map frame (shared)
+   ============================= */
+
+.island-story .mapFrame{
+  width: 100%;
+  aspect-ratio: 16 / 9;     /* stable + responsive */
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.03);
+  display: grid;
+  place-items: center;
+}
+
+/* Reset any old fixed image sizes */
+.island-story .mapFrame img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* =============================
+   Indonesia (Sumatra) map tweak
+   ============================= */
+
+.island-story .mapFrame--indo img{
+  width: 120%;              /* slight zoom to fill nicely */
+  object-position: 40% 50%; /* nudge left (35–45% sweet spot) */
+}
+
+/* =============================
+   Japan map (no crop, full shape)
+   ============================= */
+
+.island-story .mapFrame--jp img{
+  object-fit: contain;      /* tall shape, don’t cut */
+  width: 100%;
+}
+
+/* make the title smaller (you asked earlier) */
+.island-story .island-scaleTitle{
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted, #7a8a93);
+  margin: 10px 0 8px;
+}
+
+/* Island Story section spacing */
+.island-story .section {
+  margin-top: 56px;
+}
+
+/* First section shouldn’t float too far down */
+.island-story .section:first-of-type {
+  margin-top: 60px;
+}
+
+.island-story .cardGuide-label{
+  color: var(--text, #1d3949);
+  font-weight: 800;
+}
+
+/* Make p-theme match the base paragraph style */
+.p-theme {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+   margin: 8px auto 0;
+  max-width: 320px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+ 
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+/* If your normal paragraphs rely on a specific margin spacing, mirror it */
+.p + .p,
+.p-theme + .p,
+.p + .p-theme,
+.p-theme + .p-theme {
+  margin-top: 12px; /* change to whatever your IslandStory spacing is */
+}
+/* stack Honshuu + Sumatra vertically */
+.islandCard-maps{
+  display: grid;
+  grid-template-columns: 1fr;  /* 👈 one column */
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* make each figure clean + centered */
+.islandCard-maps figure{
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+/* make both maps consistent */
+.islandCard-maps .mapFrame{
+  width: 100%;
+  max-width: 320px;     /* tweak */
+  height: 170px;        /* tweak */
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.03);
+}
+
+/* inside frame */
+.islandCard-maps .mapFrame img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* keep full silhouette */
+  display: block;
+}
+
+/* captions */
+.islandCard-maps figcaption{
+  font-size: 12px;
+  color: var(--muted, #7a8a93);
+}
+
+/* =========================
+   Section 04 – Pattern Guide
+   ========================= */
+
+.patternGuide {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  gap: 38px;
+}
+
+/* each row */
+.patternGuide-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* circle with pattern */
+.patternCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -10px;
+  flex-shrink: 0;
+  background: #f7f5ef; /* fallback */
+}
+
+.patternCircle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* text block becomes a 2-col grid */
+.patternGuide-text {
+  display: grid;
+  grid-template-columns: 32px 1fr; /* kanji column | text column */
+  column-gap: 14px;
+  row-gap: 6px;
+  min-width: 0;
+}
+
+/* top line spans the two columns naturally */
+.patternGuide-top {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 32px 1fr; /* match above */
+  column-gap: 14px;
+  align-items: center;
+}
+
+/* kanji sits in fixed column */
+.patternGuide-kanji {
+  grid-column: 1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(2px); /* lighter than 4px */
+}
+
+/* island name always starts same x */
+.patternGuide-name {
+  grid-column: 2;
+  font-size: 0.90rem;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+  padding-left: 0; /* kill padding hacks */
+}
+
+/* description aligns with island name column */
+.patternGuide-text .p-theme {
+  grid-column: 2;
+  padding-left: 0; /* kill padding hacks */
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: inherit;
+  margin: 0;
+  max-width: 24em;
+}
+
+
+/* =========================
+   Responsive tuning
+   ========================= */
+
+@media (min-width: 768px) {
+  .patternGuide {
+    gap: 28px;
+  }
+
+  .patternCircle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .patternGuide-kanji {
+    font-size: 1.35rem;
+  }
+}
+
+.element-title {
+  font-weight: 600;
+  color: var(--text-strong);
+  letter-spacing: 0.04em;
+}
+.element-island {
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 6px;
+}
+.element-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 22em;
+}
+.element-icon {
+  width: 28px;
+  height: auto;
+  opacity: 0.85;
+}
+.element-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+}

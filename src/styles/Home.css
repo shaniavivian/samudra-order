@@ -1,0 +1,96 @@
+/* ===== HOME (token-based) ===== */
+.home {
+  min-height: calc(100vh - 70px);
+  background: var(--bg);
+}
+
+.home-inner {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--pad-page);
+  padding-bottom: 48px;
+}
+
+/* Brand logo */
+img.home-brandLogo {
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: 6px auto 20px auto;
+  opacity: 0.95;
+}
+
+/* List */
+.home-list {
+  display: grid;
+  gap: 28px; /* strong separation */
+  padding-left: 6px; /* subtle offset */
+}
+
+/* Row button */
+.home-row {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  align-items: start;
+
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+
+  padding: 6px 6px;
+  border-radius: var(--r-md);
+}
+
+/* Soft hover (uses token) */
+.home-row:hover {
+  background: rgba(60, 61, 61, 0.06); /* close to your ghost hover */
+}
+
+/* Accessible focus */
+.home-row:focus-visible {
+  outline: 2px solid rgba(127, 124, 79, 0.35); /* accent-based */
+  outline-offset: 3px;
+  background: rgba(60, 61, 61, 0.04);
+}
+
+/* Icon — naked */
+.home-row-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  background: none;
+  flex-shrink: 0;
+}
+
+.home-row-icon img {
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: saturate(0.9);
+}
+
+/* Text */
+.home-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-row-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.2;
+}
+
+.home-row-sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  line-height: 1.35;
+}

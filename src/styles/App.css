@@ -1,0 +1,1529 @@
+/* =========================================================
+   SAMUDRA UI — Clean CSS (Menu + Beans + Accordion + Modals)
+========================================================= */
+
+:root {
+  /* ======================
+     Surfaces (warmer paper)
+     ====================== */
+  --bg: #f2f0ea;      /* page background */
+  --surface: #fbf8f2;    /* panels / inner cards */
+  --cardCool: #f3efe6;   /* inner card / media bg */
+
+  /* ======================
+     Ink + Text (warm-neutral)
+     ====================== */
+    /* ======================
+     Ink hierarchy (DARKER + WARM)
+     ====================== */
+  --ink-strong: #1f1f1c;   /* headers / section titles (anchor) */
+  --ink: #2b2b28;          /* body text */
+  --ink-soft: #6a645d;     /* JP subtitles / descriptions */
+
+  /* ======================
+     Text mapping
+     ====================== */
+  --title: var(--ink-strong);
+  --text: var(--ink);
+  --subtext: var(--ink-soft);
+  --muted: rgba(43, 43, 40, 0.55);
+  --muted2: rgba(43, 43, 40, 0.35);
+
+  /* ======================
+     Lines (still warm)
+     ====================== */
+  --line: rgba(43, 43, 40, 0.18);
+  --divider: rgba(43, 43, 40, 0.1);
+
+  /* ======================
+     Accent (olive)
+     ====================== */
+  --accent: #7F7C4F;
+  --accentHover: #6f6c45;
+
+  /* ======================
+     Buttons (roles)
+     ====================== */
+  --btnPrimaryBg: var(--accent);
+  --btnPrimaryHover: var(--accentHover);
+  --btnPrimaryText: #ffffff;
+
+  --btnInkBg: var(--ink);
+  --btnInkHover: rgba(60, 61, 61, 0.92);
+  --btnInkText: var(--surface);
+
+  --btnGhostBg: transparent;
+  --btnGhostText: var(--ink);
+  --btnGhostHover: rgba(60, 61, 61, 0.08);
+
+  /* ======================
+     Radius / spacing
+     ====================== */
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --pad-page: 16px;
+}
+
+
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.h1, h1 { color: var(--title); }
+.h2, h2 { color: var(--title); }
+
+.p, p { color: var(--body); }
+
+.sub, .caption, .muted {
+  color: var(--subtext);
+}
+
+.btn {
+  border: none;
+  background: var(--btnBg);
+  color: var(--btnText);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-add,
+.add-to-cart {
+  background: #ffffff;
+  color: var(--text);          /* or #1d3949 */
+  border: 1px solid var(--line);
+}
+
+
+.btn:hover { background: var(--btnBgHover); }
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  background: var(--btnGhostBg);
+  color: var(--btnGhostText);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-ghost:hover { background: var(--btnGhostHover); }
+
+
+* { box-sizing: border-box; }
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: block;
+}
+
+img { display: block; max-width: 100%; }
+
+/* =========================
+   App + Topbar
+========================= */
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.topbar{
+  display: grid;
+  grid-template-columns: 40px 1fr 40px; /* back | logo | cart */
+  align-items: center;
+  padding: 10px 14px;   /* reduce top/side padding */
+  gap: 8px;             /* controls spacing inside */
+}
+
+
+.topbar-logo {
+  height: 50px;
+  width: auto;
+  opacity: 0.95;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* =========================
+   Home (optional)
+========================= */
+.screen{
+  padding-top: 24px;
+}
+
+.sub{
+  margin-bottom: 24px;
+}
+
+
+.nav {
+  display: grid;
+  gap: 12px;
+}
+
+.nav button {
+  text-align: left;
+  padding: 14px 16px;
+  border: none;
+  background: var(--cardInner);
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* =========================
+   Home
+==/* =========================
+   HOME — Travel Guide Cover
+========================= */
+/* =========================
+   HOME (travel guide cover)
+========================= */
+
+.home {
+  min-height: calc(100vh - 56px);
+  background: var(--bg);
+width: 100%;
+}
+
+.home-inner {
+  width: 100%;
+  max-width: 420px;   /* key */
+  margin: 0;
+  padding: 24px 20px 48px;
+}
+
+.home-brandLogo{
+  width: 50%;
+  height: auto;
+margin: 0 auto;
+display: block;
+}
+
+/* big cover headline */
+.home-tagline{
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: 700;
+   text-align: center;
+  line-height: 1.50;
+  color: var(--text);
+}
+
+/* list container */
+.home-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #2f2e2a;
+  line-height: 1.2;
+}
+
+.home-sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(47,46,42,0.55);
+  line-height: 1.4;
+}
+
+
+/* one row */
+.home-row{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  column-gap: 16px;
+  align-items: center;
+
+  padding: 18px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Force text stack */
+.home-row-text{
+  flex-direction: column;
+  letter-spacing: 0.06em;
+  gap: 6px; /* tweak */
+  min-width: 0;
+}
+
+/* Make sure these are block-level */
+.home-row-title,
+.home-row-sub{
+  display: block;
+  width: 100%;
+}
+
+/* optional: prevent weird wrapping behavior */
+.home-row-title{
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;        /* tighter */
+  margin: 0;               /* kill defaults */
+}
+
+.home-row-sub{
+  margin-top: 2px;         /* key change */
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.25;       /* tighter */
+  color: rgba(47,46,42,0.55);
+}
+
+
+/* divider like your other pages */
+.home-row:not(:last-child){
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* icon box: bigger + less rounded + not too white */
+.home-row-icon{
+  width: 86px;
+  height: 86px;
+  border-radius: 24px;
+  background: rgba(239,231,218,0.55); /* warm cream tint */
+  display: grid;
+  place-items: center;
+}
+
+/* prevent icon squish */
+.home-row-icon img{
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
+}
+
+/* typography */
+.home-row-title{
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.home-row-sub{
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(47,46,42,0.52);
+  line-height: 1.35;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;              /* controls title–subtitle spacing */
+}
+
+
+.home-footer img {
+  height: 50px;           /* subtle, not branding-heavy */
+  width: auto;
+}
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 28px;
+  transform: none;
+}
+
+.home-list {
+  display: grid;
+  gap: 12px;
+}
+
+.home-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+
+/* =========================================================
+   Menu List Page
+========================================================= */
+.menu-list {
+  min-height: calc(100vh - 56px);
+  padding: 18px 18px 40px;
+  background: var(--bg);
+}
+
+/* Menu Intro — make it match Beans header layout */
+/* =========================================================
+   Menu Intro — Muji/Apple/Blue Bottle tuned
+   (matches Beans header scale + calmer hierarchy)
+========================================================= */
+
+.menu-intro{
+  display: grid;
+  grid-template-columns: 72px 1fr; /* match Beans icon block */
+  gap: 14px;
+  align-items: center;            /* keeps icon + text visually centered */
+  margin: 2px 0 14px;
+}
+
+/* icon tile (same as Beans) */
+.menu-intro-icon{
+  width: 72px;
+  height: 72px;
+  background: rgba(239, 233, 221, 0.6);
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.menu-intro-icon img{
+  width: 50px;       /* adjust if your svg looks too big */
+  height: auto;
+  display: block;
+}
+
+/* tabs row */
+.menu-tabs{
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin: 0;         /* keep it tight */
+  padding-top: 2px;
+}
+
+/* tab button (JP feels better slightly tighter) */
+.menu-tab{
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 6px 0;
+
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: rgba(47,46,42,0.40);
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-tab.is-active{
+  color: var(--ink);
+}
+
+/* underline: calm + precise */
+.menu-tab.is-active::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+
+  height: 3px;
+  background: #7a7a3a;
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+/* tagline: quiet secondary line */
+.menu-tagline{
+    font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(47,46,42,0.48); /* ← softer ink */
+    text-rendering: optimizeLegibility;
+}
+
+
+/* reorder note */
+.menu-reorder-note{
+  padding: 16px 0;
+  font-size: 14px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: rgba(47,46,42,0.55);
+}
+
+/* footer logo */
+.menu-footer{
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+  padding-bottom: 8px;
+}
+
+.menu-footer-logo{
+  width: 40px;
+  height: auto;
+  opacity: 0.92;
+}
+
+
+/* =========================================================
+   Category Accordion
+========================================================= */
+.cat { padding: 0; }
+
+.cat-head {
+  width: 100%;
+  padding: 14px 0 10px;
+  border: none;
+  background: transparent;
+  text-align: left;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+
+  cursor: pointer;
+}
+
+.cat-headText { min-width: 0; }
+
+.cat-title {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.cat-title-main { color: var(--ink); }
+.cat-title-accent { color: #797747; }
+
+.cat-jp {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--jpTitle);
+  font-weight: 700;
+}
+
+.cat-desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--jpDesc);
+  line-height: 1.5;
+}
+
+.cat-panel {
+  overflow: hidden;
+  transition: height 260ms ease;
+}
+
+.cat-panelInner {
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.cat-panelInner.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* chevron */
+.cat-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  opacity: 0.55;
+  transform: rotate(0deg);
+  transition: transform 220ms ease, opacity 220ms ease;
+  margin-left: 12px;
+}
+
+.cat-chevron.is-open {
+  transform: rotate(90deg);
+  opacity: 0.9;
+}
+
+.cat-chevron img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* =========================================================
+   Category Items (row layout)
+========================================================= */
+.cat-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto 32px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.cat-nameBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+
+  min-width: 0;
+  text-align: left;
+  grid-column: 2;
+  width: 100%;
+}
+
+.cat-nameEN {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cat-nameJP {
+  font-size: 12px;
+  color: var(--jpTitle);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cat-price {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink);
+  white-space: nowrap;
+  text-align: right;
+  grid-column: 3;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.cat-plus {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(47, 46, 42, 0.55);
+
+  transition: transform 120ms ease, color 120ms ease;
+  grid-column: 4;
+  justify-self: end;
+}
+
+.cat-thumb{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  grid-column: 1;
+}
+
+.cat-plus:hover { color: rgba(47, 46, 42, 0.85); }
+.cat-plus:active { transform: scale(0.94); }
+
+
+
+/* =========================================================
+   Coffee Beans Page (MATCHES YOUR JSX)
+========================================================= */
+.beans {
+  padding: 18px 18px 60px;
+  background: var(--bg);
+  min-height: calc(100vh - 56px);
+}
+
+.beans-titleBox {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.beans-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.beans-icon img {
+  width: 60px;
+  height: auto;
+}
+
+.beans-title {
+  font-size: 15px;
+  font-weight: 900;
+ letter-spacing: -0.02em; 
+  color: var(--ink);
+}
+
+.beans-sub {
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 0.04em; /* air + refinement */
+  color: var(--muted);
+}
+
+
+.beans-section {
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+/* grid like your screenshot */
+.beans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 22px;
+}
+
+/* card = layout only */
+.bean-card{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* the rounded box behind image */
+.bean-media {
+  background: var(--card);
+  border-radius: 26px;
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* tall product ratio */
+  overflow: hidden;
+
+  display: grid;
+  align-items: flex-end; /* bag sits on “floor” */
+  justify-content: center;
+
+  max-width: 220px;     /* ← cap on bigger screens */
+  margin: 0 auto;       /* center within card */
+}
+.beans-icon,
+.home-row-icon {
+  background: rgba(239, 233, 221, 0.6);
+  border-radius: 22px;
+}
+
+
+/* bag size inside the square */
+.bean-img{
+  height: 100%;          /* ← smaller than before */
+  width: auto;
+  max-width: 85%;       /* safety cap */
+  object-fit: contain;
+  display: block;
+    transform: translateX(10%);
+}
+
+/* name left, price right */
+.bean-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px; /* optional spacing from image */
+}
+
+.bean-buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* price left, + right */
+  gap: 10px;
+}
+
+.bean-price {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* the + button (inline, same vibe as menu list) */
+.bean-plusInline {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(47, 46, 42, 0.10);
+
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+
+  color: #2f2e2a;
+  cursor: pointer;
+}
+
+.bean-plusInline:active {
+  transform: scale(0.92);
+}
+
+
+.bean-name{
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+
+/* empty placeholder card (if you keep it) */
+.bean-card--empty{
+  opacity: 0.55;
+}
+
+.bean-card--empty .bean-media{
+  background: var(--card);
+}
+
+/* =========================================================
+   Modals (IMPORTANT: layers must be above item detail)
+========================================================= */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.modalPanel {
+  width: min(380px, 92vw);
+  background: #f7f5ef;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+}
+
+/* order: item detail below, layers above */
+.modalOverlay--item { z-index: 1400; }
+.modalOverlay--layers { z-index: 1500; }
+
+/* a centered content column */
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* =========================================================
+   Bean Detail Modal
+========================================================= */
+.beanDetail{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.beanDetail-media{
+  background: var(--card);
+  border-radius: 22px;
+  padding: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.beanDetail-media img{
+  width: 160px;
+  height: auto;
+}
+
+.beanDetail-title{
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.beanDetail-desc{
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--jpTitle);
+}
+
+.beanDetail-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.beanDetail-price{
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.beanDetail-add{
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 900;
+  background: #7a7a3a; /* olive */
+  color: #fff;
+  cursor: pointer;
+}
+
+.beanDetail-add:active{
+  transform: scale(0.97);
+}
+
+.bean-titleRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+html, body {
+  margin: 0;
+  display: block;        /* ← important */
+  min-height: 100vh;
+    display: block;   
+}
+
+
+#root, .app {
+  height: auto !important;
+  min-height: 100vh;
+  overflow: visible !important;
+}
+
+.app,
+.beans,
+.beans-grid {
+  overflow: visible;
+}
+
+/* Put this in App.css (or Islands.css and import it) */
+
+.islands-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.islands-topbar {
+  display: flex;
+  align-items: center;
+  padding: 14px 14px 0;
+}
+
+.back-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: transparent  !important;
+padding: 0;
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  flex: 0 0 40px;          /* important inside flex topbar */
+  overflow: hidden;        /* prevents SVG canvas weirdness */
+}
+
+.back-icon{
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;     /* keeps SVG inside */
+}
+
+.back-button img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  object-fit: contain;     /* keeps SVG inside */
+  opacity: 0.75;
+}
+
+
+.hero-icon img{
+  width:80px;
+  height:80px;
+  display:block;
+}
+
+/* Islands intro spacing = calmer + consistent */
+.islands-intro{
+  padding: 6px 0 16px;
+}
+
+.islands-lead{
+  margin: 10px 0 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.7;
+  text-align:left;
+}
+
+.islands-lead2{
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  text-align:left;
+}
+
+/* List stays centered like your mock */
+.islands-list{
+  padding: 10px 0 22px;
+  display:flex;
+  flex-direction:column;
+  gap: 30px;
+}
+
+.island-card{
+  text-align:center;
+}
+
+.island-shape{
+  width: 170px;
+  height: auto;
+  margin: 0 auto 12px;
+  display:block;
+}
+
+.island-desc{
+  margin: 8px auto 0;
+  max-width: 320px;        /* a bit wider prevents ugly breaks */
+  font-size: 13px;         /* slightly bigger helps readability */
+  line-height: 1.9;
+  color: var(--muted);
+  text-align: center;
+
+  /* JP line breaking + nicer wrapping */
+  word-break: keep-all;    /* prevents weird mid-word breaks */
+  line-break: strict;      /* better Japanese kinsoku */
+  letter-spacing: 0.02em;  /* subtle, makes JP calmer */
+}
+.story-headline {
+  font-size: 18px;          /* ↓ from ~22–24 */
+  font-weight: 700;         /* ↓ from 800–900 */
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+  color: #2f2e2a;
+  margin-bottom: 10px;
+}
+.story-desc {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: rgba(47,46,42,0.55);
+}
+.island-visual {
+  width: 62%;              /* ↓ from ~80–90% */
+  max-width: 220px;
+  margin: 28px auto 12px;
+  opacity: 0.85;
+  filter: saturate(0.9);
+}
+
+.island-name {
+  font-size: 16px;         /* ↓ from ~20 */
+  font-weight: 700;        /* ↓ from 800–900 */
+  letter-spacing: 0.08em;  /* JP needs air */
+  text-align: center;
+  margin-top: 10px;
+  color: #2f2e2a;
+}
+.beans-titleBox {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 32px; /* ← KEY: space before main message */
+}
+/* ===== Scroll fix (global override) ===== */
+html, body {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+#root, .app {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+/* pages should use min-height, not height */
+.menu-list,
+.beans,
+.screen {
+  height: auto !important;
+  min-height: calc(100vh - 56px);
+  overflow: visible !important;
+}
+
+
+/* everything aligns to ONE column */
+.home-cover{
+  margin-top: 14px;           /* space after logo area */
+}
+
+/* subtle kicker */
+.home-intro{
+  margin: 22px 0 28px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(47,46,42,0.50);
+}
+
+/* =========================
+   Gallery Modal (SAMUDRA)
+========================= */
+
+.gmodal{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: grid;
+  place-items: center;
+
+  padding: 18px;
+  background: rgba(47, 46, 42, 0.45); /* ink overlay */
+  backdrop-filter: blur(6px);
+}
+
+.gmodal-sheet{
+  width: min(430px, 100%);
+  background: var(--bg);
+  border-radius: 22px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+  overflow: hidden;
+
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.gmodal-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 14px 10px;
+}
+
+.gmodal-titleWrap{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gmodal-kicker{
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.gmodal-counter{
+  font-size: 12px;
+  color: rgba(47,46,42,0.65);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.gmodal-close{
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(239,233,221,0.70);
+  color: rgba(47,46,42,0.7);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+}
+
+.gmodal-close:active{
+  transform: translateY(1px);
+}
+
+.gmodal-media{
+  position: relative;
+  padding: 10px 14px 14px;
+}
+
+.gmodal-figure{
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(239,233,221,0.55);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.gmodal-img{
+  width: 100%;
+  height: 52vh;              /* cinematic */
+  min-height: 320px;
+  max-height: 520px;
+  object-fit: cover;          /* crops beautifully */
+  display: block;
+}
+
+.gmodal-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  border: none;
+
+  background: rgba(247,244,238,0.85);
+  color: rgba(47,46,42,0.75);
+  font-size: 26px;
+  line-height: 1;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.gmodal-prev{ left: 20px; }
+.gmodal-next{ right: 20px; }
+
+.gmodal-nav:disabled{
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.gmodal-caption{
+  padding: 0 16px 12px;
+}
+
+.gmodal-capTitle{
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.gmodal-capSub{
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(47,46,42,0.55);
+  letter-spacing: 0.06em;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.gmodal-dots{
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 10px 16px 16px;
+}
+
+.gmodal-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(47,46,42,0.18);
+  cursor: pointer;
+}
+
+.gmodal-dot.is-active{
+  background: rgba(47,46,42,0.45);
+}
+
+body { display: block !important; }
+/* ===== Cart button (topbar) ===== */
+.cart-button{
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: none;
+  border-radius: 14px;
+
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+
+  position: relative; /* ✅ for badge */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cart-button:active{
+  transform: scale(0.98);
+}
+
+/* the cart icon */
+.cart-icon{
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+  opacity: 0.95; /* ✅ make it visible */
+  filter: none;  /* avoid accidental fading */
+}
+
+/* badge */
+.cart-badge{
+  position: absolute;
+  right: 6px;
+  top: 6px;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+
+  border-radius: 999px;
+  background: #1d3949;   /* your navy */
+  color: #fbf8f2;        /* off-white */
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+
+  border: 2px solid var(--bg); /* nice “floating” look */
+}
+
+.flow{
+  list-style:none;
+  padding:0;
+  margin:14px 0 0;
+  display:grid;
+  gap:14px;
+}
+
+.flow-item{
+  display:grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap:12px;
+  align-items:start;
+  padding:12px 0;
+  border-top:1px solid var(--line);
+}
+
+.flow-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:28px;
+  padding:0 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+img.sumatra-map {
+  width: 350px !important;
+  height: auto;
+   max-width: none; 
+}
+
+img.japan-map{
+  width: 250px;
+  height: auto;
+display: inline-flex;
+}
+
+/* =========================
+   Vertical flow: image + text + connector
+========================= */
+
+.islandStory .flow{
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 22px;
+}
+
+/* each step */
+.islandStory .flow-item{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  position: relative;
+  padding-bottom: 22px; /* space for connector */
+}
+
+/* remove any previous grid layout */
+.islandStory .flow-item{
+  grid-template-columns: none;
+  border: none;
+  background: transparent;
+}
+
+/* badge / image */
+.islandStory .flow-label{
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(0,0,0,.10);
+  color: rgba(0,0,0,.75);
+
+  margin-bottom: 10px;
+}
+
+/* explanation text */
+.islandStory .flow-item .p{
+  margin: 0;
+  max-width: 26em;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(0,0,0,.75);
+}
+
+/* vertical connector */
+.islandStory .flow-item::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2px;
+  height: 18px;
+  background: rgba(0,0,0,.12);
+  transform: translateX(-50%);
+}
+
+/* no connector after last item */
+.islandStory .flow-item:last-child::after{
+  display: none;
+}
+/* Flow section centering polish */
+.islandStory .section:has(.flow){
+  text-align: center;
+}
+
+.islandStory .flow{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.islandStory .flow-item .p{
+  margin-top: 4px;
+}
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms cubic-bezier(.22,.61,.36,1),
+    transform 700ms cubic-bezier(.22,.61,.36,1);
+  transition-delay: var(--d, 0ms);
+}
+
+.reveal.is-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Shared Page Header (Menu / Beans / Story) ===== */
+.pageHeader{
+  padding: 14px 25px 10px;          /* same rhythm everywhere */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 6px;
+}
+
+.pageHeader-icon img{
+  width: 30px;
+  height: auto;
+  display: block;
+  opacity: .9;
+}
+
+.pageHeader-title{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  color: var(--text, #1d3949);
+}
+
+.pageHeader-sub{
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted, #7a8a93);
+  max-width: 28ch;
+}

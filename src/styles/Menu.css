@@ -1,0 +1,371 @@
+/* =========================================
+   OVERRIDES: make Menu header match Beans
+   paste at bottom of Menu.css
+========================================= */
+/* ===== MENU: single source of truth gutter ===== */
+.menu{
+  --gutter: 18px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+
+.menu{
+  --item-text-size: 14px;
+  --item-text-weight: 800;
+  --item-text-color: var(--text);
+}
+
+/* Use the same text system as Beans */
+.menu-list {
+  color: var(--text, #1d3949);
+}
+
+.menu-list :where(h1,h2,h3,h4,h5,h6,p,span,small,li,a,label,div) {
+  color: var(--text, #1d3949);
+}
+
+.menu-list .container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 12px 25px 15px; /* same as Home */
+}
+
+/* Intro block matches Beans spacing + alignment */
+.menu-intro{
+    padding: 14px var(--gutter) 10px;
+  grid-template-columns: 56px 1fr; /* was 72px */
+  align-items: start;              /* was center */
+  margin: 10px 0 18px;            /* calmer spacing */
+}
+
+
+
+/* Tabs: keep layout, but unify colors */
+
+.menu-tab.is-active{
+  color: var(--text, #1d3949); /* blue-ish */
+}
+
+/* Tagline uses subtext color like Beans */
+.menu-tagline{
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--subtext, #7a8a93);
+  font-weight: 400;
+}
+
+/* Optional: hide 再注文 without touching JSX */
+.menu-tab:nth-child(2){
+  display: none;
+}
+
+/* Also unify the accordion section colors (optional but recommended) */
+.cat-title,
+.cat-nameEN{
+  color: var(--text,  #1d3949);
+}
+
+.cat-jp,
+.cat-desc,
+.cat-nameJP{
+  color: var(--text,  #1d3949);
+}
+.cat-price{
+   font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+
+
+/* =========================================
+   Menu header: switch to stacked (icon top)
+========================================= */
+
+.menu-intro{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+/* icon becomes a simple top mark (no card look) */
+.menu-intro-icon{
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  display: grid;
+  margin: 0;
+}
+
+.menu-intro-icon img{
+  width: 56px;   /* adjust: 48–64 */
+  height: auto;
+  opacity: 0.95;
+}
+
+/* Make tabs behave like a title row */
+.menu-tabs{
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide 再注文 (since you don’t want it) */
+.menu-tab:nth-child(2){
+  display: none;
+}
+
+/* Style ご注文 like a page title */
+.menu-tab{
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 0;
+  color: var(--text, #1d3949);
+  cursor: default;
+}
+
+/* Remove underline accent bar */
+.menu-tab.is-active::after{
+  display: none;
+}
+
+/* Tagline becomes the subtitle */
+.menu-tagline{
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--subtext, #7a8a93);
+}
+/* =========================================
+   Make Menu spacing airy like Beans
+========================================= */
+
+/* Header block: more breathing + nicer rhythm */
+.menu-intro{
+  margin: 18px 0 22px; /* more top/bottom space */
+  gap: 12px;           /* if you used the stacked header */
+}
+
+/* If you’re still on grid layout somewhere, this helps either way */
+.menu-tabs{
+  margin-bottom: 10px;
+}
+
+/* Tagline spacing */
+.menu-tagline{
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+
+
+/* Section header (ISLAND PARFAIT / COFFEE): less tight */
+.cat-head{
+  padding: 18px 0 14px;  /* was 14px 0 10px */
+  gap: 16px;
+}
+
+/* JP/desc lines: little more air */
+.cat-jp{
+  margin-top: 6px;  /* was 3px */
+}
+
+.cat-desc{
+  margin-top: 6px;  /* was 4px */
+  line-height: 1.7; /* was 1.5 */
+}
+
+/* Space between accordion sections */
+.cat + .cat{
+  margin-top: 10px;
+}
+.cat-nameBtn{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.cat-nameJP{
+  font-size: 12px;
+  color: var(--subtext);
+  font-weight: 575;
+  white-space: normal;   /* allow wrap */
+  line-height: 1.4;
+}
+.cat-nameEN{
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.menu-list {
+  padding: 0;            /* kill any old padding */
+  min-height: 100vh;
+  background: #f6f4ef;
+}
+
+.menu-list .container{
+  max-width: 420px;
+  margin: 0 auto;
+
+  /* TOP smaller, sides same, bottom whatever you want */
+  padding: 0px 25px 15px;
+  /*      ↑      ↑      ↑
+        top   left/right bottom */
+}
+
+
+
+
+.cat-thumb{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  display: block;
+  background: rgba(0,0,0,0.03);
+  flex: 0 0 auto;
+}
+.cat-thumb img{
+  transform: scale(1.05);
+  transform-origin: center;
+}
+
+
+.menu-categories{
+  padding: 0px 25px 10px;
+}
+.menu-list{
+  --gutter: 25px;
+  --text: #1d3949;
+  --subtext: #7a8a93;
+  background: #f6f4ef;
+  color: var(--text);
+}
+
+.menu-list .container{
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 18px; /* ✅ ONLY place that sets left/right */
+}
+.cat-row{
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: start;
+}
+
+.cat-nameEN{
+  grid-column: 2;
+  grid-row: 1;
+ letter-spacing: .02em;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text, #1d3949);
+}
+
+.cat-price{
+  grid-column: 3;
+  grid-row: 1;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+.cat-plus{
+  grid-column: 4;
+  grid-row: 1;
+  width: 12px;
+  height: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+ color: var(--muted);
+    opacity: 0.65;
+     font-weight: 500;
+  line-height: 1;
+
+}
+
+
+/* ===== Make Menu header identical to Beans pageHeader ===== */
+.menu-intro{
+  padding: 14px 25px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 6px;
+  margin: 0;              /* remove extra spacing */
+}
+
+.menu-intro-icon img{
+  width: 30px;
+  height: auto;
+  display: block;
+  opacity: .9;
+}
+
+/* Make "ご注文" look like a page title */
+.menu-tab{
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  color: var(--text, #1d3949);
+  cursor: default;
+}
+
+/* Hide extra tab UI behavior */
+.menu-tabs{
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.menu-tab.is-active::after{ display: none; }
+
+/* Subtitle exactly like Beans */
+.menu-tagline{
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted, #7a8a93);
+  max-width: 28ch;
+  letter-spacing: 0;
+}
+
+/* Category EN title */
+.cat-title{
+  font-size: 15px;        /* ↓ from ~18 */
+  font-weight: 700;       /* ↓ from 900 */
+  letter-spacing: .08em;  /* airy, editorial */
+  color: var(--text);
+}
+
+/* Category JP */
+.cat-jp{
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--subtext);
+  margin-top: 4px;
+}
+
+/* Category description */
+.cat-desc{
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--subtext);
+  margin-top: 4px;
+  max-width: 34ch;
+}
