@@ -12,11 +12,11 @@ import papuaSago from "../assets/menu/parfait/papua-sago.png";
 // ===================
 // LAYERS IMAGES
 // ===================
-import layersSumatra from "../assets/layers/sumatra.png";
-import layersKalimantan from "../assets/layers/kalimantan.png";
-import layersJava from "../assets/layers/java.png";
-import layersSulawesi from "../assets/layers/sulawesi.png";
-import layersPapua from "../assets/layers/papua.png";
+import layersSumatra from "../assets/islands/layers/sumatra.png";
+import layersKalimantan from "../assets/islands/layers/kalimantan.png";
+import layersJava from "../assets/islands/layers/java.png";
+import layersSulawesi from "../assets/islands/layers/sulawesi.png";
+import layersPapua from "../assets/islands/layers/papua.png";
 
 
 
