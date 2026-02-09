@@ -12,11 +12,11 @@ import papuaSago from "../assets/menu/parfait/papua-sago.png";
 // ===================
 // LAYERS IMAGES
 // ===================
-import layersSumatra from "../assets/layers/Sumatra.png";
-import layersBali from "../assets/layers/Bali.png";
-import layersJava from "../assets/layers/Java.png";
-import layersSulawesi from "../assets/layers/Sulawesi.png";
-import layersPapua from "../assets/layers/Papua.png";
+import layersSumatra from "../assets/layers/sumatra.png";
+import layersKalimantan from "../assets/layers/kalimantan.png";
+import layersJava from "../assets/layers/java.png";
+import layersSulawesi from "../assets/layers/sulawesi.png";
+import layersPapua from "../assets/layers/papua.png";
 
 
 
@@ -125,7 +125,7 @@ const menuData = [
         nameJP: "カリマンタン・サンセット",
         price: 1480,
         image: kalimantanSunset,
-        layersImage: layersBali,
+        layersImage: layersKalimantan,
         descriptionJP:
           "南国フルーツのやさしい甘みと、なめらかな口当たり。夕暮れのバリを思わせる、まろやかで心地よい味わい。",
         tasteJP: "まろやか / 甘め / トロピカル",
