@@ -21,7 +21,7 @@ export default function App() {
   // =========================
   // Splash (DEV vs FINAL)
   // =========================
-  const ALWAYS_PLAY_SPLASH = false; // ✅ dev: true / final: false
+  const ALWAYS_PLAY_SPLASH = true; // ✅ dev: true / final: false
 
   const [showSplash, setShowSplash] = useState(() => {
     if (ALWAYS_PLAY_SPLASH) return true;
