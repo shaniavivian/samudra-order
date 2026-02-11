@@ -29,16 +29,16 @@ import americanoImg from "../assets/menu/coffee/americano.png";
 // ===================
 // ISLAND ICON SVGs (coffee options)
 // ===================
-import iconSumatra from "../assets/islands/Sumatra.svg";
+import iconSumatra from "../assets/islands/sumatra.svg";
 // ✅ pick ONE that matches your real filename:
 // If your file is Jawa.svg, keep this:
-import iconJava from "../assets/islands/Java.svg";
+import iconJava from "../assets/islands/java.svg";
 // If your file is Java.svg, change to:
 // import iconJava from "../assets/Java.svg";
 
-import iconSulawesi from "../assets/islands/Sulawesi.svg";
-import iconKalimantan from "../assets/islands/Kalimantan.svg";
-import iconPapua from "../assets/islands/Papua.svg";
+import iconSulawesi from "../assets/islands/sulawesi.svg";
+import iconKalimantan from "../assets/islands/kalimantan.svg";
+import iconPapua from "../assets/islands/papua.svg";
 
 // ===================
 // Helpers
