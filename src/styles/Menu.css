@@ -369,3 +369,233 @@
   margin-top: 4px;
   max-width: 34ch;
 }
+
+/* =========================================
+   MENU (clean override)
+   paste at bottom of Menu.css
+========================================= */
+
+.menu{
+  --gutter: 25px;
+  --text: #1d3949;
+  --subtext: #7a8a93;
+  --bg: #f6f4ef;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* one source of truth for side padding */
+.pageHeader,
+.menu-categories{
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* =========================================
+   Header
+========================================= */
+
+.pageHeader{
+  padding-top: 14px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.pageHeader-icon{
+  display: grid;
+}
+
+.pageHeader-icon img{
+  width: 30px;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+.pageHeader-title{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.pageHeader-sub{
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--subtext);
+  max-width: 28ch;
+}
+
+/* =========================================
+   Accordion category header
+========================================= */
+
+.cat + .cat{ margin-top: 10px; }
+
+.cat-head{
+  width: 100%;
+  min-height: 96px;
+  padding: 18px 20px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  text-align: left;
+  border: 1px solid rgba(29,57,73,0.18);
+  background: rgba(255,255,255,0.25);
+}
+
+.cat-title{
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.cat-jp{
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--subtext);
+}
+
+.cat-desc{
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--subtext);
+  max-width: 34ch;
+}
+
+.cat-chevron{
+  font-size: 22px;
+  opacity: 0.7;
+  transition: transform 180ms ease;
+}
+
+.cat-chevron.is-open{
+  transform: rotate(180deg);
+}
+
+/* panel animation helper */
+.cat-panel{
+  overflow: hidden;
+  transition: height 220ms ease;
+}
+
+.cat-panelInner{
+  padding: 8px 0 12px;
+}
+
+/* =========================================
+   Item rows
+========================================= */
+
+.cat-row{
+  display: grid;
+  grid-template-columns: 40px 1fr auto 44px;
+  column-gap: 12px;
+  align-items: center;
+
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(29,57,73,0.12);
+}
+
+.cat-thumb{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: rgba(0,0,0,0.03);
+  display: block;
+}
+
+.cat-nameBtn{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cat-nameEN{
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.cat-nameJP{
+  font-size: 12px;
+  font-weight: 575;
+  line-height: 1.4;
+  color: var(--subtext);
+  white-space: normal;
+}
+
+.cat-price{
+  min-width: 72px;
+  text-align: right;
+
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--subtext);
+}
+
+/* PLUS: big tap target, soft visual */
+.cat-plus{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(29,57,73,0.16);
+  background: rgba(29,57,73,0.06);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cat-plusIcon{
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.cat-plus:active{
+  transform: scale(0.96);
+}
+
+/* footer */
+.menu-footer{
+  padding: 18px var(--gutter) 24px;
+  display: grid;
+  place-items: center;
+}
+.menu-footer-logo{
+  width: 44px;
+  height: auto;
+  opacity: 0.95;
+}

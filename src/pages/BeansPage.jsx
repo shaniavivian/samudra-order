@@ -47,17 +47,18 @@ export default function BeansPage({ onBack, onAdd }) {
               <div className="bean-titleRow">
                 <span className="bean-name">{bean.nameJP}</span>
 
-                <button
-                  className="cat-plus bean-plus"
-                  type="button"
-                  aria-label="詳細を見る"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedBean(bean);
-                  }}
-                >
-                  ＋
-                </button>
+               <button
+  className="btnPlus"
+  type="button"
+  aria-label={`${bean.nameJP} の詳細を見る`}
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedBean(bean);
+  }}
+>
+  <span aria-hidden="true">+</span>
+</button>
               </div>
 
               <span className="bean-price">

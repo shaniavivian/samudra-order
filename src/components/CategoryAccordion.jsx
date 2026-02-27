@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export default function CategoryAccordion({
   category,
@@ -9,17 +9,22 @@ export default function CategoryAccordion({
   const panelRef = useRef(null);
   const [panelHeight, setPanelHeight] = useState(0);
 
-  // Smooth open/close by animating measured height
-  useEffect(() => {
+  const measure = () => {
     const el = panelRef.current;
     if (!el) return;
+    setPanelHeight(isOpen ? el.scrollHeight : 0);
+  };
 
-    if (isOpen) {
-      setPanelHeight(el.scrollHeight);
-    } else {
-      setPanelHeight(0);
-    }
+  useLayoutEffect(() => {
+    measure();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, category]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <div className="cat">
@@ -31,21 +36,17 @@ export default function CategoryAccordion({
         aria-expanded={isOpen}
       >
         <div className="cat-headText">
-          {/* EN */}
           <div className="cat-title">
             <span className="cat-title-main">{category.titleEN}</span>
           </div>
 
-          {/* JP */}
           <div className="cat-jp">{category.titleJP}</div>
 
-          {/* DESC */}
           {category.descriptionJP && (
             <div className="cat-desc">{category.descriptionJP}</div>
           )}
         </div>
 
-        {/* Chevron */}
         <span
           className={`cat-chevron ${isOpen ? "is-open" : ""}`}
           aria-hidden="true"
@@ -62,19 +63,20 @@ export default function CategoryAccordion({
         >
           {(category.items ?? []).map((item) => (
             <div key={item.id} className="cat-row">
-              {/* left: thumbnail */}
+              {/* thumbnail */}
               {item.image ? (
                 <img
                   className="cat-thumb"
                   src={item.image}
                   alt={item.nameJP ?? item.nameEN ?? ""}
                   loading="lazy"
+                  decoding="async"
+                  width="72"
+                  height="72"
+                  onLoad={measure}
                 />
               ) : (
-                <div
-                  className="cat-thumb cat-thumb--empty"
-                  aria-hidden="true"
-                />
+                <div className="cat-thumb cat-thumb--empty" aria-hidden="true" />
               )}
 
               {/* name (opens detail) */}
@@ -82,12 +84,10 @@ export default function CategoryAccordion({
                 type="button"
                 className="cat-nameBtn"
                 onClick={() => onSelectItem?.(item)}
-                aria-label={`Open details for ${item.nameEN}`}
+                aria-label={`${item.nameEN} の詳細を開く`}
               >
                 <span className="cat-nameEN">{item.nameEN}</span>
-                {item.nameJP && (
-                  <span className="cat-nameJP">{item.nameJP}</span>
-                )}
+                {item.nameJP && <span className="cat-nameJP">{item.nameJP}</span>}
               </button>
 
               {/* price */}
@@ -98,15 +98,15 @@ export default function CategoryAccordion({
               {/* plus (also opens detail) */}
               <button
                 type="button"
-                className="cat-plus"
+                className="btnPlus"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   onSelectItem?.(item);
                 }}
-                aria-label={`Open details for ${item.nameEN}`}
+                aria-label={`${item.nameEN} の詳細を開く`}
               >
-                +
+                <span aria-hidden="true">+</span>
               </button>
             </div>
           ))}

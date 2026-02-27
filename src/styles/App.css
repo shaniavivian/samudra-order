@@ -788,30 +788,37 @@ display: block;
 }
 
 /* the + button (inline, same vibe as menu list) */
+/* Bigger, accessible tap target */
 .bean-plusInline {
-  width: 26px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid rgba(47, 46, 42, 0.18);
   background: rgba(47, 46, 42, 0.10);
 
   display: grid;
   place-items: center;
 
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   line-height: 1;
-  padding: 0;
-  margin: 0;
 
   color: #2f2e2a;
   cursor: pointer;
+
+  /* improves mobile tapping */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.bean-plusInline svg,
+.bean-plusInline .plusIcon {
+  width: 18px;
+  height: 18px;
 }
 
 .bean-plusInline:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
 }
-
 
 .bean-name{
   font-size: 12px;
@@ -1526,4 +1533,80 @@ display: inline-flex;
   line-height: 1.6;
   color: var(--muted, #7a8a93);
   max-width: 28ch;
+}
+/* Shared + button */
+.btnPlus{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 70%, var(--cardCool) 30%);
+  /* if color-mix feels scary, use: background: var(--cardCool); */
+
+  display: grid;
+  place-items: center;
+
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btnPlus:active{ transform: scale(0.96); }
+
+.btnPlus > span{
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.75;
+}
+.btnPlus{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--cardCool);
+
+  display: grid;
+  place-items: center;
+
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btnPlus:active{ transform: scale(0.96); }
+
+.btnPlus > span{
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.75;
+}/* GLOBAL: one true + button */
+.btnPlus{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  border: 1px solid var(--line);
+  background: #f8f6f2;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btnPlus:active{ transform: scale(0.96); }
+
+.btnPlus > span{
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.65;  /* softer like your current vibe */
 }

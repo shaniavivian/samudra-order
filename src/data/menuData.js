@@ -3,11 +3,11 @@
 // ===================
 // PARFAIT IMAGES
 // ===================
-import sumatraCitrus from "../assets/menu/parfait/sumatra-citrus.png";
-import kalimantanSunset from "../assets/menu/parfait/kalimantan-sunset.png";
-import javaEarth from "../assets/menu/parfait/java-earth.png";
-import sulawesiGreen from "../assets/menu/parfait/sulawesi-green.png";
-import papuaSago from "../assets/menu/parfait/papua-sago.png";
+import sumatraCitrus from "../assets/menu/parfait/sumatra-citrus.webp";
+import kalimantanSunset from "../assets/menu/parfait/kalimantan-sunset.webp";
+import javaEarth from "../assets/menu/parfait/java-earth.webp";
+import sulawesiGreen from "../assets/menu/parfait/sulawesi-green.webp";
+import papuaSago from "../assets/menu/parfait/papua-sago.webp";
 
 // ===================
 // LAYERS IMAGES
@@ -21,10 +21,10 @@ import layersPapua from "../assets/layers/papua.png";
 
 
 //* COFFEE IMAGES *//
-import espressoImg from "../assets/menu/coffee/espresso.png";
-import macchiatoImg from "../assets/menu/coffee/macchiato.png";
-import latteImg from "../assets/menu/coffee/latte.png";
-import americanoImg from "../assets/menu/coffee/americano.png";
+import espressoImg from "../assets/menu/coffee/espresso.webp";
+import macchiatoImg from "../assets/menu/coffee/macchiato.webp";
+import latteImg from "../assets/menu/coffee/latte.webp";
+import americanoImg from "../assets/menu/coffee/americano.webp";
 
 // ===================
 // ISLAND ICON SVGs (coffee options)

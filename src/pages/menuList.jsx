@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CategoryAccordion from "../components/CategoryAccordion";
 import menuData from "../data/menuData";
 
@@ -7,14 +7,21 @@ import logo from "../assets/logo/logo-icon.svg";
 import "../styles/Menu.css";
 
 export default function MenuList({ onSelectItem, addToCart }) {
+  const categories = useMemo(() => menuData ?? [], []);
+
+  // Start closed, then open the first category as soon as we have data
   const [openId, setOpenId] = useState(null);
-  const [mode] = useState("order"); // or keep setMode if you actually toggle it
 
+  useEffect(() => {
+    if (openId == null && categories.length > 0) {
+      setOpenId(categories[0].id);
+    }
+  }, [openId, categories]);
+
+  // Always keep one open
   const handleToggle = (id) => {
-    setOpenId((cur) => (cur === id ? null : id));
+    setOpenId(id);
   };
-
-  const categories = menuData ?? [];
 
   return (
     <main className="menu">
@@ -27,26 +34,15 @@ export default function MenuList({ onSelectItem, addToCart }) {
       </section>
 
       <section className="menu-categories" aria-label="Menu categories">
-        {mode === "order" ? (
-          categories.map((category) => (
-            <CategoryAccordion
-              key={category.id}
-              category={category}
-              isOpen={openId === category.id}
-              onToggle={() => handleToggle(category.id)}
-              onSelectItem={onSelectItem}
-            />
-          ))
-        ) : (
-          <ReorderBlock
-            onAddMany={(itemsWithQty) => {
-              itemsWithQty.forEach(({ item, qty }) => {
-                for (let i = 0; i < qty; i++) addToCart(item);
-              });
-            }}
-            onAddOne={(item) => addToCart(item)}
+        {categories.map((category) => (
+          <CategoryAccordion
+            key={category.id}
+            category={category}
+            isOpen={openId === category.id}
+            onToggle={() => handleToggle(category.id)}
+            onSelectItem={onSelectItem}
           />
-        )}
+        ))}
       </section>
 
       <footer className="menu-footer" aria-label="Menu footer">

@@ -1,8 +1,8 @@
-import javaImg from "../assets/beans/java-coffee.png";
-import kalimantanImg from "../assets/beans/kalimantan-coffee.png";
-import papuaImg from "../assets/beans/papua-coffee.png";
-import sulawesiImg from "../assets/beans/sulawesi-coffee.png";
-import sumatraImg from "../assets/beans/sumatra-coffee.png";
+import javaImg from "../assets/beans/java-coffee.webp";
+import kalimantanImg from "../assets/beans/kalimantan-coffee.webp";
+import papuaImg from "../assets/beans/papua-coffee.webp";
+import sulawesiImg from "../assets/beans/sulawesi-coffee.webp";
+import sumatraImg from "../assets/beans/sumatra-coffee.webp";
 
 const beansData = [
   {
